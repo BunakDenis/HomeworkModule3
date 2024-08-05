@@ -13,22 +13,26 @@ public class SumCalculatorTest {
     }
 
     @Test
-    public void testThatMethodSumWorkOk() {
+    public void testThatMethodSumWithArgument1WorkOk() {
         //Given
-        int[] digitsForTest = {1, 3, 4, 0};
-        int[] expectedDigits = {1, 6, 10, 0};
+        int expected = 1;
 
         //Then
-        for (int i = 0; i < digitsForTest.length; i++) {
-            int digit = digitsForTest[i];
+        Assertions.assertEquals(calculator.sum(1), expected);
+    }
 
-            if (digitsForTest[i] != 0) {
-                Assertions.assertEquals(calculator.sum(digit), expectedDigits[i]);
-            } else {
-                Assertions.assertThrows(
-                        IllegalArgumentException.class,
-                        () -> calculator.sum(digit));
-            }
-        }
+    @Test
+    public void testThatMethodSumWithArgument3WorkOk() {
+        //Given
+        int expected = 6;
+
+        //Then
+        Assertions.assertEquals(calculator.sum(3), expected);
+    }
+
+    @Test
+    public void testThatMethodSumWithArgument0WorkOk() {
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> calculator.sum(0));
     }
 }
